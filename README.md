@@ -24,12 +24,12 @@ An application for performing sentiment analysis and sentiment-based recommendat
 
 #### Predicting with a particular model
 ```python unmuteai-cli.py --run predict --model naive_bayes --predict "The game is amazing" ```
-```python unmuteai-cli.py --run predict --model rf --predict "The game is terrible"```
+
+```python unmuteai-cli.py --run predict --model rf --predict "The game is terrible" ```
 
 
 #### Predicting with review text... 
-```python unmuteai-cli.py --run predict --model naive_bayes --predict "best game
-"```
+```python unmuteai-cli.py --run predict --model naive_bayes --predict "best game"```
 
 #### Predicting with game title... 
 ```python unmuteai-cli.py --run predict --model naive_bayes --title --predict "The best game ever played" --title "The Guest"```
