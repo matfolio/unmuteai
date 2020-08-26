@@ -316,19 +316,29 @@ def get_recommended_games(title="",path="",rec_games=[], review_prob=1):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="The tags provided are used to interact with the application to perform\
+        various operations on the dataset and apply the models on the processed dataset to learn and get the parameters\
+        values estimated")
 
-    parser.add_argument('--train', default="./data/train.csv")
-    parser.add_argument('--test', default="./data/test.csv")
-    parser.add_argument('--predict' , default="")
-    parser.add_argument('--data' , default="./data/game_reviews.csv")
-    parser.add_argument('--init' , default="./data/game_reviews.csv")
-    parser.add_argument('--split' , default="./data/processed_data.csv")
-    parser.add_argument('--preprocess' , default="./data/game_reviews.csv")
-    parser.add_argument('--benchmark' , default="./data/processed_data.csv")
-    parser.add_argument('--run' , type=str, default='')
-    parser.add_argument('--model' , type=str, default='naive_bayes')
-    parser.add_argument('--title' , type=str, default='')
+    parser.add_argument('-t','--train', help="can be used to train the models. used together with\
+        with the model tag. ",default="./data/train.csv")
+    parser.add_argument('-d','--test', help="can be used to test the models. used together with\
+        with the model tag.", default="./data/test.csv")
+    parser.add_argument('-p','--predict',help="can be used to predict with the models. used together with\
+        with the model tag. Predictions are also displayed together with the game recommendations", default="")
+    #parser.add_argument('--data', help="" , default="./data/game_reviews.csv")
+    parser.add_argument('-i','--init' ,help="Providing data for initialization", default="./data/game_reviews.csv")
+    parser.add_argument('-s','--split' ,help="splitting the dataset into train ans test set.\
+         This is required before training models or stretch\
+         for prediction of reviews",default="./data/processed_data.csv")
+    parser.add_argument('-o','--preprocess', help="Data preprocessing. Data needed to be preprocessed before performing\
+         executing the split-data command" , default="./data/game_reviews.csv")
+    parser.add_argument('-b','--benchmark', help="Estimate the baseline accuracy. This is needed for performance evaluation\
+         of the model. This should be compared with the accuracy result generated for each model." , default="./data/processed_data.csv")
+    parser.add_argument('-r','--run' ,help="run executed for every commands sent to the module", type=str, default='')
+    parser.add_argument('-m','--model',help="used alongside with models. Provided models: naive_bayes and rf (random forest).\
+         These are both used for binary classification." , type=str, default='naive_bayes')
+    parser.add_argument('-l','--title' ,help="Needed for recommendations by title. used together with predict tag.", type=str, default='')
     args = parser.parse_args()
     print(args)
     result = ""
